@@ -9,5 +9,49 @@
 
 #tagline {
   text-align: center;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
+
+#leftHome {
+  float: left;
+  display: inline-block;
+  width: 400px;
+  height: 100%;
+  text-align: center;
+}
+
+#search {
+  width: 200px; 
+
+}
+
+#rightHome {
+  float: right;
+  display: inline-block;
+  width: 400px;
+  height: 100%;
+  text-align: center;
+}
+
+#create {
+  width: 200px;
+
+}
+
+.btn-primary {
+    background-color: darkgray;
+    border-color: darkgray;
+    color: black;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus
+ {
+  background-color: black;
+}
+

@@ -1,3 +1,13 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#name {
+  float: right;
+  
+}
+
+#tagline {
+  text-align: center;
+  vertical-align: middle;
+}

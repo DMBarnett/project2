@@ -1,19 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">{{recipe.this}}</h5>
-          <p>
-            <strong>ID</strong>: {{recipe.id}}</p>
-          <p>
-            <p>
-              <strong>Text</strong>: {{receipe.text}}</p>
-            <p>
-              <strong>Description:</strong> {{recipe.description}}</p>
-            <a href="/">← Back To Home</a>
-        </div>
-      </div>
+<div class="col-8 offset-2">
+    {{!-- recipe image and name from database --}}
+  <div class="card" id="ingredient">
+    <img class="ingredient-image" src=".../100px100" alt="{{ingredient.name}}">
+    <div class="card-body">
+      <p class="ingredient-text">{{ingredient.name}}</p>
     </div>
   </div>
 </div>
+
+

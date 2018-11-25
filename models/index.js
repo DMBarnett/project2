@@ -26,7 +26,7 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach(function(file) {
-    var model = sequelize.import(path.join(__dirname, file));
+    var model = sequelize["import"](path.join(__dirname, file));
     db[model.name] = model;
   });
 
@@ -38,5 +38,11 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.recipe = require("../models/recipe.js")(sequelize, Sequelize);
+db.ingredient = require("../models/ingredients.js")(sequelize, Sequelize);
+
+db.recipe.belongsToMany(db.ingredient, {as: "Ingredients", through: "recipe_ingredient"});
+db.ingredient.belongsToMany(db.recipe, {as: "Recipes", through: "recipe_ingredient"});
 
 module.exports = db;

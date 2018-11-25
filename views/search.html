@@ -35,7 +35,8 @@
     </nav>
   <div class="container">
     <div class="row">
-        <div class="col-lg-12" id="ingredients">
+        <div class="col-lg-12" id="ingredientsList">
+            ul
            <!-- ingredients from database will get dumped here -->
         </div>
     </div>
@@ -44,11 +45,102 @@
         <a href=""><button type="button" class="btn btn-primary btn-lg" id="searchBtn">Get My Recipes!</button></a>
     </div>
     <div class="row">
-        <div class="col-lg-12" id="recipes">
+        <div class="col-lg-12" id="recipesList">
             <!-- recipes from database will get dumped here -->
         </div>
     </div>
   </div>
 </body>
 <link rel="stylesheet" type="text/css" href="../public/styles/styles.css">
+<script type="text/javascript">
+  
+    function runIngredientsQuery() {
+      // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+      $.ajax({ url: "/api/ingredients", method: "GET" })
+        .then(function(ingredients) {
+  
+          // Here we then log the ingredients to console, where it will show up as an object.
+          console.log(ingredients);
+          console.log("------------------------------------");
+  
+          // Loop through and display each of the ingredients
+          for (var i = 0; i < ingredients.length; i++) {
+  
+            // Get a reference to the ingredientsList element and populate it with tables
+            var ingredientsList = $("#ingredientsList");
+  
+            // Then display the fields in the HTML (Section Name, Date, URL)
+            var listItem = $("<li class='list-group-item mt-4'>");
+  
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-secondary">Left</button>
+                <button type="button" class="btn btn-secondary">Middle</button>
+                <button type="button" class="btn btn-secondary">Right</button>
+            </div>
+                
+            listItem.append(
+              $("<h2>").text("Table #" + (i + 1)),
+              $("<hr>"),
+              $("<h2>").text("Name: " + tableData[i].ingredientName),
+              $("<h2>").text("ID: " + ingredients[i].ingredientName),
+            );
+  
+            tableList.append(listItem);
+          }
+        });
+    }
+  
+    function runRecipesQuery() {
+  
+      // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
+      $.ajax({ url: "/api/recipes", method: "GET" })
+        .then(function(recipesData) {
+  
+          // Here we then log the waitlistData to console, where it will show up as an object.
+          console.log(recipesData);
+          console.log("------------------------------------");
+  
+          // Loop through and display each of the customers
+          for (var i = 0; i < recipesData.length; i++) {
+  
+            // Get a reference to the waitList element and populate it with tables
+            var recipesList = $("#recipesList");
+  
+            // Then display the fields in the HTML (Section Name, Date, URL)
+            var listItem = $("<li class='list-group-item mt-4'>");
+  
+            listItem.append(
+              $("<h2>").text("Table #" + (i + 1)),
+              $("<hr>"),
+              $("<h2>").text("Recipe Image: " + recipesData[i].recipeName),
+              $("<h2>").text("Recipe Name: " + recipesData[i].recipeName),
+                $("<h2>").text("Recipe Id: " + recipesData[i].recipeId),
+            );
+  
+            recipesList.append(listItem);
+          }
+        });
+    }
+  
+    // // This function resets all of the data in our tables. This is intended to let you restart a demo.
+    // function clearTable() {
+    //   alert("Clearing...");
+  
+    //   // Clear the tables on the server and then empty the elements on the client
+    //   $.ajax({ url: "/api/clear", method: "POST" }).then(function() {
+    //     $("#waitList").empty();
+    //     $("#tableList").empty();
+    //   });
+    // }
+  
+    // $("#clear").on("click", clearTable);
+  
+  
+    // Run Queries!
+    // ==========================================
+    runIngredientsQuery();
+    runRecipesQuery();
+  
+  
+  </script>
 </html>

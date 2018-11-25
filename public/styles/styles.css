@@ -2,6 +2,18 @@
   line-height: 2.5;
 }
 
+.navbar-brand {
+  margin: 20px;
+
+}
+
+
+.nav-item {
+  margin: 20px;
+  font-size: 20px;
+}
+
+
 #name {
   float: right;
   
@@ -9,14 +21,16 @@
 
 #tagline {
   text-align: center;
-  /* vertical-align: middle; */
+  
 }
 
 #leftHome {
+  margin: 10px;
+  padding: 20px; 
   float: left;
-  display: inline-block;
+  /* display: inline-block; */
   width: 400px;
-  height: 100%;
+  height: auto;
   text-align: center;
 }
 
@@ -26,16 +40,22 @@
 }
 
 #rightHome {
+  margin: 10px;
+  padding: 20px; 
   float: right;
-  display: inline-block;
+  /* display: inline-block; */
   width: 400px;
-  height: 100%;
+  height: auto;
   text-align: center;
 }
 
 #create {
   width: 200px;
 
+}
+
+.btn {
+  text-align: center;
 }
 
 .btn-primary {

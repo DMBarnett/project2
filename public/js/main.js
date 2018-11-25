@@ -1,12 +1,9 @@
-$(document).ready(function () {
-  // when the 
+$(document).ready(function() {
+  var ingredientsLink = $("#ingredients");
 
-  var ingredients = $("#ingredients");
-
-
+  
 
 
 
   var recipes = $("#recipes");
-
 })

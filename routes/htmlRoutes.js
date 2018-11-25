@@ -4,17 +4,16 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     res.render("index", {
-      msg: "Welcome!",
-      examples: dbExamples
+      msg: "Welcome!"
     });
   });
 
   // Load example page and pass in an example by id
   app.get("/ingredients/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.recipe_Searcher.findAll({}).then(function(results) {
       res.render("ingredients", {
         msg: "What do you have right now?",
-        example: dbExamples
+        ingredient: results
       });
     });
   });

@@ -1,5 +1,6 @@
 var unirest = require("unirest");
 var databaseFill = require("./database-build.js");
+console.log(databaseFill);
 
 unirest
   .get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1")

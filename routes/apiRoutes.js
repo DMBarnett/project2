@@ -7,6 +7,18 @@ module.exports = function(app) {
       res.json(dbExamples);
     });
   });
+  app.get("/api/search/", function(req, res){
+    var passed = [];
+    req.forEach(element => {
+      passed.push[element.id];
+    });
+    db.Recipe.findAll({
+      include: [{
+        model: Ingredients,
+        where: {id: {[Op.contains]: passed}}
+      }]
+    })
+  })
 
   // Create a new example
   app.post("/api/examples", function(req, res) {

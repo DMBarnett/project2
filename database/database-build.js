@@ -17,44 +17,53 @@ var tableFiller = function (recipe1, ingredientArr) {
     return recipes;
   }).then(recipes => {
     // add for loop to go through ingredients array and add each ingredient 
-    for (var i = 0; ingredientArr.length; i++) {
-      ingredient.findOrCreate({
-        where: {
-          name: ingredientArr[i].name
-        },
-        defaults: {
-          spoonacularID: ingredientArr[i].spoonID,
-          imageLink: ingredientArr[i].img
+    async function processIngredients (array) {
+      for (const item of array) {
+        console.log(item);
+        await ingredientTransaction(item, recipes);
+      }
+      console.log("Done!");
+    }
+    processIngredients(ingredientArr);
+  });
+}
+
+var ingredientTransaction = function(ingredient1, recipes) {
+  ingredient.findOrCreate({
+    where: {
+      name: ingredient1.name
+    },
+    defaults: {
+      spoonacularID: ingredient1.spoonID,
+      imageLink: ingredient1.img
+    }
+  }).spread((newIngredient, created) => {
+    var newIngredientID = newIngredient.get({
+      plain: true
+    }).id;
+    var newIngredientArray = [newIngredient, newIngredientID, created];
+    return newIngredientArray;
+  }).spread((newIngredient, newIngredientID, createdI) => {
+    if (!createdI) {
+      // add new ingredient
+      newIngredient.setRecipes(recipes, {
+        through: {
+          amount: ingredient1.amount,
+          unit: ingredient1.unit
         }
-      }).spread((newIngredient, created) => {
-        var newIngredientID = newIngredient.get({
-          plain: true
-        }).id;
-        var newIngredientArray = [newIngredient, newIngredientID, created];
-        return newIngredientArray;
-      }).spread((newIngredient, newIngredientID, createdI) => {
-        if (!createdI) {
-          // add new ingredient
-          console.log(ingredientArr);
-          newIngredient.setRecipes(recipes, {
-            through: {
-              amount: ingredientArr[i].amount,
-              unit: ingredientArr[i].unit
-            }
-          });
-        } else {
-          // grab ingredient ID and insert into join table 
-          newIngredient.setRecipes(recipes, {
-            through: {
-              ingredientId: newIngredientID,
-              amount: ingredientArr[i].amount,
-              unit: ngredientArr[i].unit
-            }
-          });
+      });
+    } else {
+      // grab ingredient ID and insert into join table 
+      newIngredient.setRecipes(recipes, {
+        through: {
+          ingredientId: newIngredientID,
+          amount: ingredient1.amount,
+          unit: ingredient1.unit
         }
       });
     }
   });
 }
 
-module.exports = tableFiller;
+
+module.exports = tableFiller, ingredientTransaction;

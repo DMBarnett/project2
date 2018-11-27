@@ -4,19 +4,7 @@ module.exports = function (sequelize, DataTypes) {
     recipeText: DataTypes.TEXT,
     spoonacularID: DataTypes.INTEGER,
     imageLink: DataTypes.STRING
-  }, 
-  // {
-  //   classMethods: {
-  //     associate: function(models) {
-  //       Recipe.belongsToMany(models.Ingredient, {
-  //         through: "RecipeIngredient"
-  //       });
-  //     }
-  //   }
-  // }
-  );
-
-  console.log(typeof Recipe);
+  });
   return Recipe
 };
 

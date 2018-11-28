@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-2">
                   <label for="add-button">Add Item</label>
-                  <button class="btn btn-primary" id="addButton" onclick="addfieldFunction(event) "> Add </button>
+                  <button class="btn btn-primary" id="addButton" onclick="createNewRow(event) "> Add </button>
                 </div>
               </div>
               <div class="row" id="addIngred">
@@ -86,18 +86,20 @@
     i += 1;
   }
     
-  function addfieldFunction(event) { 
+  function createNewRow(event) { 
+    event.preventDefault(); 
     var ingredDiv = document.getElementById("addIngred");
 
     var a = document.createElement("INPUT");
     var b = document.createElement("INPUT");
     var c = document.createElement("INPUT");
+    var d = document.createElement("INPUT");
     
     // create input text object for each field
     a.setAttribute("class", "form-control");
     a.setAttribute("id", "amountCol");
     a.setAttribute("type", "text");
-    a.setAttribute("placeholder",  "1/4, 1");
+    a.setAttribute("placeholder",  "1/4, half");
     document.body.appendChild(a);
 
     
@@ -110,22 +112,25 @@
     c.setAttribute("class", "form-control");
     c.setAttribute("id", "ingredCol");
     c.setAttribute("type", "text");
-    c.setAttribute("placeholder", "flour, sugar");
+    c.setAttribute("placeholder", "flour, salt");
     document.body.appendChild(c);
 
-    a.setAttribute("name", "a_level[ " + i + " ][0]"); 
+    d.setAttribute("class", "form-control");
+    d.setAttribute("id", "ingredCol");
+    d.setAttribute("type", "text");
+    d.setAttribute("placeholder", "xxxxx");
+    document.body.appendChild(d);
+
+    a.setAttribute("name", "a_level[ " + i + "][0]"); 
     ingredDiv.appendChild(a);
     b.setAttribute("name", "a_level[ " + i + "][1]");
     ingredDiv.appendChild(b);
     c.setAttribute("name", "a_level[ " + i + "][2]");
     ingredDiv.appendChild(c);
+    d.setAttribute("name", "a_level[ " + i + "][3]");
+    ingredDiv.appendChild(d);
 
     increment();
-    event.preventDefault(); 
-
-    // document.getElementById("addIngred").appendChild(amount);
-    // document.getElementById("addIngred").appendChild(measure);
-    // document.getElementById("addIngred").appendChild(ingred);
 
   }
   

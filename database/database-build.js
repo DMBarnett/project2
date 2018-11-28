@@ -25,6 +25,7 @@ var tableFiller = function (recipe1, ingredientArr) {
       console.log("Done!");
     }
     processIngredients(ingredientArr);
+    return recipes;
   });
 }
 
@@ -44,24 +45,30 @@ var ingredientTransaction = function(ingredient1, recipes) {
     var newIngredientArray = [newIngredient, newIngredientID, created];
     return newIngredientArray;
   }).spread((newIngredient, newIngredientID, createdI) => {
-    if (!createdI) {
-      // add new ingredient
-      newIngredient.setRecipes(recipes, {
-        through: {
-          amount: ingredient1.amount,
-          unit: ingredient1.unit
-        }
-      });
-    } else {
-      // grab ingredient ID and insert into join table 
-      newIngredient.setRecipes(recipes, {
-        through: {
-          ingredientId: newIngredientID,
-          amount: ingredient1.amount,
-          unit: ingredient1.unit
-        }
-      });
-    }
+    newIngredient.addRecipes(recipes, {
+      through: {
+        amount: ingredient1.amount,
+        unit: ingredient1.unit
+      }
+    });
+    // if (!createdI) {
+    //   // add new ingredient
+    //   newIngredient.setRecipes(recipes, {
+    //     through: {
+    //       amount: ingredient1.amount,
+    //       unit: ingredient1.unit
+    //     }
+    //   });
+    // } else {
+    //   // grab ingredient ID and insert into join table 
+    //   newIngredient.setRecipes(recipes, {
+    //     through: {
+    //       ingredientId: newIngredientID,
+    //       amount: ingredient1.amount,
+    //       unit: ingredient1.unit
+    //     }
+    //   });
+    // }
   });
 }
 

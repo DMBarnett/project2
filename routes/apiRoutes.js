@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all ingredients
-=======
+
   app.get("/api/ingredients", function(req, res) {
     db.ingredient.findAll({}).then(function(ingredients) {
       res.json(ingredients);

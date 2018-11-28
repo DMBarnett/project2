@@ -36,8 +36,14 @@ $(document).ready(function() {
       event.preventDefault();
       
     holdingArr.push
-  })
-  $("#searchBtn").on("click", function(){
+  });
 
-  })
+    $("#searchBtn").on("click", function(){
+        event.preventDefault();
+        var foo = [1,2,3,4];
+        foo = JSON.stringify(foo);
+        $.post("/api/search", {"hello":foo}, function(response){
+            console.log(response);
+        })
+    });
 });

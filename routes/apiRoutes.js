@@ -1,37 +1,28 @@
 var db = require("../models");
-var databaseFill = require("../database/database-build");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
+  // Get all ingredients
+  app.get("/api/ingredients", function(req, res){
+    db.ingredient.findAll({
+    }).then(function(dbingredients){
+      res.json(dbingredients)
+    })
   });
-  app.get("/api/search/", function(req, res){
+  //using the selected ingredients, find all recipes that contain at least the selected ingredient
+  app.post("/api/search/", function(req, res){
     var passed = [];
-    req.forEach(element => {
+    req.body.forEach(element => {
       passed.push[element.id];
     });
+    console.log(passed);
     db.Recipe.findAll({
       include: [{
         model: Ingredients,
         where: {id: {[Op.contains]: passed}}
       }]
+    }).then(function(returnedRecipes){
+      console.log(returnedRecipes);
+
     })
   })
-
-  // Create a new example
-  app.post("/api/recipes", function(req, res) {
-    db.Example.create(req.body).then(function(newRecipe) {
-      res.json(newRecipe);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
 };

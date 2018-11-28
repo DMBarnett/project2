@@ -11,7 +11,11 @@ console.log(allConfig);
 
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
+<<<<<<< HEAD
 console.log("config: " + config);
+=======
+console.log("env: " + env);
+>>>>>>> 9ec79fc5844c0679dad84304e4a45c07e551c523
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {

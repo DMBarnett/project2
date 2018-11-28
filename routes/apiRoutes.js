@@ -1,8 +1,8 @@
 var db = require("../models");
-var databaseFill = require("../database/database-build");
 
 module.exports = function(app) {
   // Get all ingredients
+=======
   app.get("/api/ingredients", function(req, res) {
     db.ingredient.findAll({}).then(function(ingredients) {
       res.json(ingredients);
@@ -15,6 +15,21 @@ module.exports = function(app) {
       res.json(newRecipe);
     });
   });
+  
+   //using the selected ingredients, find all recipes that contain at least the selected ingredient
+  app.post("/api/search/", function(req, res){
+    var passed = [];
+    req.body.forEach(element => {
+      passed.push[element.id];
+    });
+    console.log(passed);
+    db.Recipe.findAll({
+      include: [{
+        model: Ingredients,
+        where: {id: {[Op.contains]: passed}}
+      }]
+    }).then(function(returnedRecipes){
+      console.log(returnedRecipes);
 
   // Delete a recipe by id
   app.delete("/api/recipes/:id", function(req, res) {

@@ -98,15 +98,17 @@
 }
 
 #amountCol,
-#measureCol,
-#ingredCol {
+#measureCol {
   display: inline-block;
   margin: 12px;
   width: 100px; 
   padding: 10px; 
-
 }
 
 #ingredCol {
-  width: 300px; 
+  display: inline-block;
+  margin: 12px;
+  width: 430px; 
+  padding: 10px; 
 }
+

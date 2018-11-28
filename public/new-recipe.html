@@ -93,7 +93,6 @@
     var a = document.createElement("INPUT");
     var b = document.createElement("INPUT");
     var c = document.createElement("INPUT");
-    var d = document.createElement("INPUT");
     
     // create input text object for each field
     a.setAttribute("class", "form-control");
@@ -101,7 +100,6 @@
     a.setAttribute("type", "text");
     a.setAttribute("placeholder",  "1/4, half");
     document.body.appendChild(a);
-
     
     b.setAttribute("class", "form-control");
     b.setAttribute("id", "measureCol");
@@ -113,13 +111,8 @@
     c.setAttribute("id", "ingredCol");
     c.setAttribute("type", "text");
     c.setAttribute("placeholder", "flour, salt");
+    // $("c").addClass("ingredFullWidth");
     document.body.appendChild(c);
-
-    d.setAttribute("class", "form-control");
-    d.setAttribute("id", "ingredCol");
-    d.setAttribute("type", "text");
-    d.setAttribute("placeholder", "xxxxx");
-    document.body.appendChild(d);
 
     a.setAttribute("name", "a_level[ " + i + "][0]"); 
     ingredDiv.appendChild(a);
@@ -127,8 +120,6 @@
     ingredDiv.appendChild(b);
     c.setAttribute("name", "a_level[ " + i + "][2]");
     ingredDiv.appendChild(c);
-    d.setAttribute("name", "a_level[ " + i + "][3]");
-    ingredDiv.appendChild(d);
 
     increment();
 

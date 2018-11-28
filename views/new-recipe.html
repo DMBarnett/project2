@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/styles/styles.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <title>Add Your Recipe</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="./index.html"><h2>Fridge2Table</h2></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./search.html">New Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./recipes.html">My Recipes</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4" id="tagline">
+          <h2>Add your own recipe to</h2>
+          <img src="../public/images/2.png">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8" id="add-recipe">
+          <form>
+            <div class="form-group" method="POST">
+              <div class="row">
+                <div class="col-2">
+                  <label for="amount">Amount</label>
+                  <input type="text" name="a_level[+i][0]" class="form-control" id="amount" placeholder="1/4, half">
+                </div>
+                <div class="col-2">
+                    <label for="measurement">Measurement</label>
+                    <input type="text" name="a_level[+i][1]" class="form-control" id="measure" placeholder="cup, tsp">
+                </div>
+                <div class="col-6">
+                    <label for="ingredient">Ingredient Name</label>
+                    <input type="text" name="a_level[+i][2]" class="form-control" id="ingred" placeholder="flour, salt">
+                </div>
+                <div class="col-2">
+                  <label for="add-button">Add Item</label>
+                  <button class="btn btn-primary" id="addButton" onclick="createNewRow(event) "> Add </button>
+                </div>
+              </div>
+              <div class="row" id="addIngred">
+              </div>
+              <br>
+              <div class="row" id="instructions">
+                <label for="instructions">Instructions</label>
+                <textarea type="text" class="form-control" id="instructions" rows="6" placeholder="1. Mix dry and wet ingredients."></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+
+
+  // user clicks the plus button and adds a new row to input a new ingredient
+  var i = 0;
+
+  function increment() {
+    i += 1;
+  }
+    
+  function createNewRow(event) { 
+    event.preventDefault(); 
+    var ingredDiv = document.getElementById("addIngred");
+
+    var a = document.createElement("INPUT");
+    var b = document.createElement("INPUT");
+    var c = document.createElement("INPUT");
+    var d = document.createElement("INPUT");
+    
+    // create input text object for each field
+    a.setAttribute("class", "form-control");
+    a.setAttribute("id", "amountCol");
+    a.setAttribute("type", "text");
+    a.setAttribute("placeholder",  "1/4, half");
+    document.body.appendChild(a);
+
+    
+    b.setAttribute("class", "form-control");
+    b.setAttribute("id", "measureCol");
+    b.setAttribute("type", "text");
+    b.setAttribute("placeholder", "cup, pint");
+    document.body.appendChild(b);
+
+    c.setAttribute("class", "form-control");
+    c.setAttribute("id", "ingredCol");
+    c.setAttribute("type", "text");
+    c.setAttribute("placeholder", "flour, salt");
+    document.body.appendChild(c);
+
+    d.setAttribute("class", "form-control");
+    d.setAttribute("id", "ingredCol");
+    d.setAttribute("type", "text");
+    d.setAttribute("placeholder", "xxxxx");
+    document.body.appendChild(d);
+
+    a.setAttribute("name", "a_level[ " + i + "][0]"); 
+    ingredDiv.appendChild(a);
+    b.setAttribute("name", "a_level[ " + i + "][1]");
+    ingredDiv.appendChild(b);
+    c.setAttribute("name", "a_level[ " + i + "][2]");
+    ingredDiv.appendChild(c);
+    d.setAttribute("name", "a_level[ " + i + "][3]");
+    ingredDiv.appendChild(d);
+
+    increment();
+
+  }
+  
+</script>
+<link rel="stylesheet" type="text/css" href="../public/styles/styles.css">
+</html>
+
+

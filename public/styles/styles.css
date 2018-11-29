@@ -84,10 +84,14 @@
   align-items: center;
   padding: 6px;
 }
-
+.form-control {
+  margin: 10px;
+  padding: 10px; 
+}
 #instructions {
   margin: 0px;
 }
+
 
 #amountCol,
 #measureCol {
@@ -103,6 +107,8 @@
   width: 430px; 
   padding: 10px; 
 }
+
+
 .chosen .card-body {
   transition: .5s ease;
   background-color: #90C226 !important;

@@ -170,7 +170,19 @@
       "ingredients": JSON.stringify(ingredientArr)
     }, function (response) {
       console.log(response);
-    })
+    });
+    $("#recipe-name").val("");
+    $("#instructions").val("");
+    $(".ingredCol").each(function(){
+      $(this).val("");
+    });
+    $(".amountCol").each(function(){
+      $(this).val("");
+    });
+    $(".measureCol").each(function(){
+      $(this).val("");
+    });
+    $("#addIngred").empty();
   });
 </script>
 

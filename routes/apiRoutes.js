@@ -2,25 +2,36 @@ var db = require("../models");
 var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get all ingredients
-  app.get("/api/ingredients", function(req, res){
-    db.ingredient.findAll({
-    }).then(function(dbingredients){
-      res.json(dbingredients)
-    })
+
+  app.get("/api/ingredients", function (req, res) {
+    db.ingredient.findAll({}).then(function (ingredients) {
+      res.json(ingredients);
+    });
   });
+
+  // Create a new recipe
+  app.post("/api/recipes", function (req, res) {
+    databaseFill().then(function (newRecipe) {
+      res.json(newRecipe);
+    });
+  });
+
   //using the selected ingredients, find all recipes that contain at least the selected ingredient
-  app.post("/api/search/", function(req, res){
+  app.post("/api/search/", function(req, res) {
     console.log(req.body);
-    var foo = JSON.parse(req.body.hello)
+    var foo = JSON.parse(req.body.hello);
     console.log(foo);
-    db.recipe.findAll({
+    //foo = [1,4];
+    db.recipe
+    .findAll({
       include: [{
         model: db.ingredient,
-        where: {id: {[Op.contains]: foo}}
+        as: "Ingredients",
+        where: {id: { [Op.in]:foo} }
       }]
-    }).then(function(returnedRecipes){
+    }).then(function (returnedRecipes) {
       console.log(returnedRecipes);
       res.json(returnedRecipes);
     })

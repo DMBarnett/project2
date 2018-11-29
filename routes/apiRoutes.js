@@ -1,4 +1,6 @@
 var db = require("../models");
+var Sequelize = require("sequelize");
+var Op = Sequelize.Op;
 
 module.exports = function (app) {
   // Get all ingredients
@@ -17,6 +19,7 @@ module.exports = function (app) {
   });
 
   //using the selected ingredients, find all recipes that contain at least the selected ingredient
+<<<<<<< HEAD
   app.post("/api/search/", function (req, res) {
     var passed = [];
     req.body.forEach(element => {
@@ -49,3 +52,23 @@ module.exports = function (app) {
     });
   });
 };
+=======
+  app.post("/api/search/", function(req, res) {
+    console.log(req.body);
+    var foo = JSON.parse(req.body.hello);
+    console.log(foo);
+    //foo = [1,4];
+    db.recipe
+    .findAll({
+      include: [{
+        model: db.ingredient,
+        as: "Ingredients",
+        where: {id: { [Op.in]:foo} }
+      }]
+    }).then(function (returnedRecipes) {
+      console.log(returnedRecipes);
+      res.json(returnedRecipes);
+    })
+  })
+};
+>>>>>>> 03e7397a41f2fac502e47182b26cc3520bfc41bf

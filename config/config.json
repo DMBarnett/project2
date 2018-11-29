@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "1111",
+    "password": null,
     "database": "recipe_Searcher",
     "host": "localhost",
     "port": 3306,
@@ -9,7 +9,7 @@
   },
   "test": {
     "username": "root",
-    "password": "root",
+    "password": null,
     "database": "recipe_Searcher",
     "host": "localhost",
     "port": 3306,

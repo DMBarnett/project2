@@ -51,6 +51,7 @@ var ingredientTransaction = function(ingredient1, recipes) {
         unit: ingredient1.unit
       }
     });
+  });
 }
 
 

@@ -55,7 +55,7 @@
             <div class="row">
               <div class="col-10-lg">
                 <label for="recipe-name">Name of Your Recipe</label>
-                <input type="text" name="recipe-name" class="form-control" id="recipe-name" placeholder="Fetuccini Alfredo">
+                <input type="text" name="recipe-name" class="form-control" id="recipe-name" placeholder="Fettuccini Alfredo">
               </div>
             </div>
             <div class="row">
@@ -79,7 +79,7 @@
             <div class="row" id="addIngred">
             </div>
             <br>
-            <div class="row" id="instructions">
+            <div class="row">
               <label for="instructions">Instructions</label>
               <textarea type="text" class="form-control" id="instructions" rows="6" placeholder="1. Mix dry and wet ingredients."></textarea>
             </div>
@@ -142,8 +142,7 @@
     event.preventDefault();
 
     var recipeObject = {};
-    var foo = $("#instructions").val().trim();
-    foo = foo.replace(/[, ]+/g, " ").trim();
+    var foo = $("#instructions").val().trim().replace(/[, ]+/g, " ");
     recipeObject.spoonID = "user recipe, no spoon ID";
     recipeObject.name = $("#recipe-name").val().trim();
     recipeObject.text = foo;
@@ -155,7 +154,9 @@
     }
     $('.ingredCol').each(function (i, item) {
       ingredientArr[i].name = $(item).val();
-      ingredientArr[i].img = "https://spoonacular.com/cdn/ingredients_100x100/" + $(item).val().replace(/(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g,"") + ".jpg";
+      ingredientArr[i].spoonID = "user recipe, no spoon ID";
+      ingredientArr[i].img = "https://spoonacular.com/cdn/ingredients_100x100/" + $(item).val().replace(
+        /(^\s+|[^a-zA-Z0-9 ]+|\s+$)/g, "") + ".jpg";
     });
     $('.amountCol').each(function (i, item) {
       ingredientArr[i].amount = $(item).val();
@@ -164,6 +165,12 @@
       ingredientArr[i].unit = $(item).val();
     });
     console.log(recipeObject, ingredientArr);
+    $.post("/api/new-recipe", {
+      "recipe": JSON.stringify(recipeObject),
+      "ingredients": JSON.stringify(ingredientArr)
+    }, function (response) {
+      console.log(response);
+    })
   });
 </script>
 

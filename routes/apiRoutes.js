@@ -13,9 +13,10 @@ module.exports = function (app) {
 
   // Create a new recipe
   app.post("/api/recipes", function (req, res) {
-    databaseFill().then(function (newRecipe) {
-      res.json(newRecipe);
-    });
+    console.log(req);
+    // databaseFill().then(function (newRecipe) {
+    //   res.json(newRecipe);
+    // });
   });
 
   //using the selected ingredients, find all recipes that contain at least the selected ingredient

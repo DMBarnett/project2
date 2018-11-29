@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   // Create a new recipe
-  app.post("/api/recipes", function (req, res) {
+  app.post("/api/new-recipe", function (req, res) {
     console.log(req);
     // databaseFill().then(function (newRecipe) {
     //   res.json(newRecipe);

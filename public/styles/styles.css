@@ -89,20 +89,37 @@
   margin: 0px;
 }
 
-#amountCol,
-#measureCol {
+.amountCol,
+.measureCol {
   display: inline-block;
-  margin: 12px;
+  margin: 14px;
   width: 100px; 
   padding: 10px; 
 }
 
-#ingredCol {
+.ingredCol {
   display: inline-block;
   margin: 12px;
   width: 430px; 
   padding: 10px; 
 }
+
+#amount0,
+#measure0,
+#ingred0 {
+  display: block;
+  margin: 0px auto;
+  width: 100%;
+  padding: 10px;
+}
+
+#recipe-name {
+  display: inline-block;
+  margin: 12px;
+  width: 550px; 
+  padding: 10px; 
+}
+
 .chosen .card-body {
   transition: .5s ease;
   background-color: #90C226 !important;

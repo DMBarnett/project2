@@ -24,11 +24,7 @@ module.exports = function (app) {
     });
   });
 
-<<<<<<< HEAD
   //using the selected ingredients, find all recipes that contain at least the selected ingredient
-=======
-  // using the selected ingredients, find all recipes that contain at least the selected ingredient
->>>>>>> ac2dabe1d41df1b7239b3031f20bdb2eeb29c5b2
   app.post("/api/search/", function(req, res) {
     console.log(req.body);
     var foo = JSON.parse(req.body.hello);

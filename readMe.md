@@ -38,11 +38,13 @@ The application was developed using client-side and server-side tools and techno
 ### API
 
 ![Spoontacular](https://github.com/hardimanhk/project2/blob/master/public/images/Spoontacular.png)
+
 The primary API used in this project is Spoontacular, a RESTful API that leverages recipe, food, and nutrition API documentation. The Spoontacular Nutrition, Recipe, and Food API allows you to access over 365,000 recipes, 86,000 food, and 
 
 ### Library
 
 ![Twilio API](https://github.com/hardimanhk/project2/blob/master/public/images/Twilio.png)
+
 The additional library used in this project is Twilio API. Twilio programmatically allows the user to make and receive phone calls, send and receive text messages, and perform other communication functions using its web service APIs. This functionality lets users text recipe ingredients to their phone so they can use the list while shopping.
 
 ### Database

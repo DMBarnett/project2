@@ -1,7 +1,10 @@
 .list-group-item {
   line-height: 2.5;
 }
+.navbar {
+  background-image: url(https://celebrateurbanbirds.org/wp-content/uploads/2016/09/stock-photo-cat-watching-bird-on-the-window-133222604-1920x1233.jpg);
 
+}
 .navbar-brand {
   margin: 20px;
 }

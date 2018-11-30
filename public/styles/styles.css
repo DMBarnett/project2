@@ -12,7 +12,7 @@
 }
 
 #name {
-  float: right; 
+  float: right;
 }
 
 #tagline {
@@ -21,22 +21,22 @@
 
 #leftHome {
   margin: 10px;
-  padding: 20px; 
+  padding: 20px;
   float: left;
   /* display: inline-block; */
   text-align: center;
 }
 
 #search {
-  width: 190px; 
+  width: 190px;
 }
 
 #rightHome {
   margin: 10px;
-  padding: 20px; 
+  padding: 20px;
   float: right;
   /* display: inline-block; */
-  
+
   text-align: center;
 }
 
@@ -50,28 +50,27 @@
 }
 
 #homeBtn {
-  text-align: center; 
+  text-align: center;
 }
 
 .form {
   display: table-cell;
-  text-align: center; 
+  text-align: center;
 }
 
 .btn-primary {
-    background-color: #90C226;
-    border-color: #90C226;
-    color: white;
-    align-items: center;
-    padding: 20px;
-    margin: 10px; 
+  background-color: #90C226;
+  border-color: #90C226;
+  color: white;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
 }
 
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited,
-.btn-primary:focus
- {
+.btn-primary:focus {
   background-color: black;
   border-color: black;
 }
@@ -84,7 +83,7 @@
   margin: 10px;
   padding-left: 200px;
   padding-right: 200px;
-  padding-top: 20px; 
+  padding-top: 20px;
 }
 
 #addButton {
@@ -94,10 +93,12 @@
   align-items: center;
   padding: 6px;
 }
+
 .form-control {
   margin: 10px;
-  padding: 10px; 
+  padding: 10px;
 }
+
 #instructions {
   margin: 0px;
 }
@@ -106,15 +107,15 @@
 .measureCol {
   display: inline-block;
   margin: 14px;
-  width: 100px; 
-  padding: 10px; 
+  width: 100px;
+  padding: 10px;
 }
 
 .ingredCol {
   display: inline-block;
   margin: 12px;
-  width: 430px; 
-  padding: 10px; 
+  width: 430px;
+  padding: 10px;
 }
 
 #amount0,
@@ -129,8 +130,8 @@
 #recipe-name {
   display: inline-block;
   margin: 12px;
-  width: 550px; 
-  padding: 10px; 
+  width: 550px;
+  padding: 10px;
 }
 
 .chosen .card-body {
@@ -146,16 +147,18 @@
   border-top-right-radius: calc(.25rem - 1px);
 }
 
+.ingred-card {
+  max-height: 200px;
+}
 
 .card {
-  max-height:200px;
   position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
-  margin:10px;
+  margin: 10px;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
@@ -173,4 +176,9 @@
   background-color: #90C226;
 }
 
-
+.recipe-card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  /* Also can take single values to make all sides the same, or 2 values (vert/horz), or 3 values (top/horz/bottom). */
+}

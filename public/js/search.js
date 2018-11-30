@@ -23,7 +23,7 @@ $(document).ready(function () {
           // Then display the fields in the HTML (Section Name, Date, URL)
           var newCard = $("<div>")
               //do these need to give these a data-type to pass into an array so we can identify them? or using an id?
-              newCard.attr("class", "card")
+              newCard.attr("class", "card ingred-card")
               newCard.attr("style", "width: 200px");
               newCard.attr("data-id", `${ingredients[i].id}`)
           var newImg = $("<img>");

@@ -3,16 +3,16 @@ $(document).ready(function () {
   foo = JSON.parse(foo);
   console.log(foo);
 
-  // function queryIngredients(recipeID) {
-  //   console.log(recipeID);
-  //   $.post("/api/ingrSearch", {
-  //     recipe: recipeID
-  //   }, function (response) {
-  //     console.log(response);
-  //     //need to pull amount and units from recipe_ingredients table
-  //     unitAmountCall(response, recipeID);
-  //   });
-  // }
+  function queryIngredients(recipeID) {
+    console.log(recipeID);
+    $.post("/api/ingrSearch", {
+      recipe: recipeID
+    }, function (response) {
+      console.log(response);
+      //need to pull amount and units from recipe_ingredients table
+      unitAmountCall(response, recipeID);
+    });
+  }
 
   // function unitAmountCall(ingredientSearchResponse, recipe) {
   //   var ingredientsArr = [];
@@ -62,16 +62,6 @@ $(document).ready(function () {
     $("#recipes-Cards").append(newCard);
   });
 
-  // $(document).on("click", ".card", function () {
-  //   event.preventDefault();
-
-  //   var chosen = $(this).data("id");
-  //   queryIngredients(chosen);
-  //   var finder = $(`p#${chosen}`);
-
-  //   finder.text("hello world");
-  // });
-
   $('#recipeModal').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget); // Button that triggered the modal
     var recipeID = button.data("id");
@@ -91,6 +81,7 @@ $(document).ready(function () {
       response.forEach(element => {
         modal.find('.modal-body').append("<li id=" + element.id + ">" + element.name + "</li>");
         ingredientIDs.push(element.id);
+        allIngredientsArr.push(element.name);
       });
       //need to pull amount and units from recipe_ingredients table
       $.post("/api/unitAmount", {
@@ -105,22 +96,22 @@ $(document).ready(function () {
       });
     });
 
+    $("#text-button").on("click", function () {
+      event.preventDefault();
+      anotherIngredientsArr = JSON.stringify(allIngredientsArr);
+      phoneNumber = $("#phone-number").val().trim();
+      $.post("/api/twilio", {
+        ingredients: anotherIngredientsArr,
+        phone: phoneNumber
+      }, function (response) {
+        console.log(response);
+      });
+    });
+
     var modal = $(this)
     modal.find('.modal-title').text(recipeName);
     modal.find('.modal-body').text(recipeText + "\n\n");
   });
 
-  $("#textBtn").on("click", function () {
-    event.preventDefault();
 
-    //Use to test passing arr to the api
-    //var foo = [1,2,3,4];
-
-    foo = JSON.stringify(IngredArr);
-    $.post("/api/twilio", {
-      hello: foo
-    }, function (response) {
-      console.log(response);
-    });
-  });
 });

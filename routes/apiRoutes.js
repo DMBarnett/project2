@@ -3,23 +3,23 @@ var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
 var databaseFill = require("../database/database-build");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all ingredients
 
-  app.get("/api/ingredients", function (req, res) {
-    db.ingredient.findAll({}).then(function (ingredients) {
+  app.get("/api/ingredients", function(req, res) {
+    db.ingredient.findAll({}).then(function(ingredients) {
       res.json(ingredients);
     });
   });
 
   // Create a new recipe
-  app.post("/api/new-recipe", function (req, res) {
+  app.post("/api/new-recipe", function(req, res) {
     var recipe = JSON.parse(req.body.recipe);
     var ingredientsArray = JSON.parse(req.body.ingredients);
     var databasePromise = new Promise(function(resolve, reject) {
       resolve(databaseFill(recipe, ingredientsArray));
-    })
-    databasePromise.then(function (newRecipe) {
+    });
+    databasePromise.then(function(newRecipe) {
       res.json(newRecipe);
     });
   });
@@ -31,15 +31,49 @@ module.exports = function (app) {
     console.log(foo);
     //foo = [1,4];
     db.recipe
-    .findAll({
-      include: [{
-        model: db.ingredient,
-        as: "Ingredients",
-        where: {id: { [Op.in]:foo} }
-      }]
-    }).then(function (returnedRecipes) {
-      console.log(returnedRecipes);
-      res.json(returnedRecipes);
-    })
-  })
+      .findAll({
+        include: [
+          {
+            model: db.ingredient,
+            as: "Ingredients",
+            where: { id: { [Op.in]: foo } }
+          }
+        ]
+      })
+      .then(function(returnedRecipes) {
+        console.log(returnedRecipes);
+        res.json(returnedRecipes);
+      });
+  });
+
+  app.post("/api/ingrSearch", function(req, res) {
+    // var working = JSON.parse(req.body.recipe);
+    db.ingredient
+      .findAll({
+        include: [
+          {
+            model: db.recipe,
+            as: "Recipes",
+            where: { id: req.body.recipe }
+          }
+        ]
+      })
+      .then(function(returnedRecipes) {
+        console.log(returnedRecipes);
+        res.json(returnedRecipes);
+      });
+  });
+
+  app.post("/api/unitAmount", function(req, res){
+    var iArr = JSON.parse(req.body.ingredientsID);
+      db.recipeIngredient.findAll({
+      where:{
+        recipeId : req.body.recipeID,
+        ingredientId: {[Op.in]:iArr}
+      }
+    }).then(function(returnedRecipes) {
+    console.log(returnedRecipes);
+    res.json(returnedRecipes);
+  });
+}); 
 };

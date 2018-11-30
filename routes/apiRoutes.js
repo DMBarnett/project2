@@ -2,6 +2,7 @@ var db = require("../models");
 var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
 var databaseFill = require("../database/database-build");
+var textMe = require("../public/js/twilio_f2t.js");
 
 module.exports = function(app) {
   // Get all ingredients
@@ -75,5 +76,16 @@ module.exports = function(app) {
     console.log(returnedRecipes);
     res.json(returnedRecipes);
   });
-}); 
+});
+
+  app.post("/api/twilio", function(req, res) {
+    var ingredToText = JSON.parse(req.body.ingredients);
+    var phone = req.body.phone;
+    var ingredString = "";
+    for(i = 0; i < ingredToText.length; i++) {
+      ingredString += ingredToText[i] + "\n";
+    }
+    console.log(ingredString, phone);
+    textMe(ingredString, phone);
+  })
 };

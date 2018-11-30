@@ -1,6 +1,7 @@
 var db = require("../models");
 var Sequelize = require("sequelize");
 var Op = Sequelize.Op;
+var databaseFill = require("../database/database-build");
 
 module.exports = function (app) {
   // Get all ingredients
@@ -12,13 +13,22 @@ module.exports = function (app) {
   });
 
   // Create a new recipe
-  app.post("/api/recipes", function (req, res) {
-    databaseFill().then(function (newRecipe) {
+  app.post("/api/new-recipe", function (req, res) {
+    var recipe = JSON.parse(req.body.recipe);
+    var ingredientsArray = JSON.parse(req.body.ingredients);
+    var databasePromise = new Promise(function(resolve, reject) {
+      resolve(databaseFill(recipe, ingredientsArray));
+    })
+    databasePromise.then(function (newRecipe) {
       res.json(newRecipe);
     });
   });
 
+<<<<<<< HEAD
   //using the selected ingredients, find all recipes that contain at least the selected ingredient
+=======
+  // using the selected ingredients, find all recipes that contain at least the selected ingredient
+>>>>>>> ac2dabe1d41df1b7239b3031f20bdb2eeb29c5b2
   app.post("/api/search/", function(req, res) {
     console.log(req.body);
     var foo = JSON.parse(req.body.hello);

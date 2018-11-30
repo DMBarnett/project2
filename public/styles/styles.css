@@ -75,6 +75,29 @@
   border-color: black;
 }
 
+#text-button {
+  background-color: #90C226;
+  border-color: #90C226;
+  color: white;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 10px 10px 0px;
+}
+
+#close-modal {
+  background-color: #90C226;
+  border-color: #90C226;
+  color: white;
+  align-items: center;
+  padding: 10px;
+  margin: -5px 10px 10px 10px;
+}
+
+#phone-number {
+  margin: 10px 0px 10px 10px;
+  padding: 24px 10px;
+}
+
 #column-head {
   text-align: center;
 }

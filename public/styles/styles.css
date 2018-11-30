@@ -146,9 +146,11 @@
   border-top-right-radius: calc(.25rem - 1px);
 }
 
+.ingred-card {
+  max-height:200px;
+}
 
 .card {
-  max-height:200px;
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -172,5 +174,9 @@
   transition: .5s ease;
   background-color: #90C226;
 }
+
+/* #recipeModal {
+  width: 90%;
+} */
 
 

@@ -34,10 +34,12 @@ $(document).ready(function () {
 
     //do these need to give these a data-type to pass into an array so we can identify them? or using an id?
     newCard.attr("class", "card mb-3");
+    var newImgContainer = $("<div>");
+    newImgContainer.attr("class", "recipe-card-image");
     var newImg = $("<img>");
     newImg.attr("class", "card-img-top");
-    newImg.attr("style", "width: 200px");
     newImg.attr("src", `${image}`);
+    newImgContainer.append(newImg);
     var textDiv = $("<div>");
     textDiv.attr("class", "card-body");
     var ingrName = $("<h5>");
@@ -54,7 +56,7 @@ $(document).ready(function () {
     button.attr("data-img", `${element.imageLink}`);
     button.attr("data-text", `${element.recipeText}`);
     button.text("Get Full Recipe");
-    newCard.append(newImg);
+    newCard.append(newImgContainer);
     newCard.append(textDiv);
     newCard.append(button);
     $("#recipes-Cards").append(newCard);

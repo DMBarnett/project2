@@ -3,7 +3,17 @@ $(document).ready(function () {
     function runIngredientsQuery() {
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
     $.get("/api/ingredients", function(ingredients) {
+        function compare(x,y){
+            if(x.name < y.name){
+                return -1;
+            }
+            if(y.name < x.name){
+                return 1;
+            };
+            return 0;
+        }
 
+        ingredients.sort(compare);
         // Here we then log the ingredients to console, where it will show up as an object.
         console.log(ingredients);
         // console.log("------------------------------------");
@@ -31,7 +41,7 @@ $(document).ready(function () {
       });
       $(document).on("click", ".card", function () {
         event.preventDefault();
-        alert("clicked successful")
+        //alert("clicked successful")
         // when card is clicked, clicked state of card should become "true" and the ID stored
     
         var foo = $(this);
@@ -68,6 +78,9 @@ $(document).ready(function () {
         foo = JSON.stringify(holdingArr);
         $.post("/api/search", {"hello":foo}, function(response){
             console.log(response);
-        })
+            response = JSON.stringify(response);
+            localStorage.setItem("recipes", response);
+            window.location.replace("recipes.html");            
+        });
     });
 });

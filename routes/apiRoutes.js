@@ -18,7 +18,7 @@ module.exports = function (app) {
     var ingredientsArray = JSON.parse(req.body.ingredients);
     var databasePromise = new Promise(function(resolve, reject) {
       resolve(databaseFill(recipe, ingredientsArray));
-    })
+    });
     databasePromise.then(function (newRecipe) {
       res.json(newRecipe);
     });

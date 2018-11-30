@@ -19,12 +19,12 @@ module.exports = function(app) {
     var databasePromise = new Promise(function(resolve, reject) {
       resolve(databaseFill(recipe, ingredientsArray));
     });
-    databasePromise.then(function(newRecipe) {
+    databasePromise.then(function (newRecipe) {
       res.json(newRecipe);
     });
   });
 
-  // using the selected ingredients, find all recipes that contain at least the selected ingredient
+  //using the selected ingredients, find all recipes that contain at least the selected ingredient
   app.post("/api/search/", function(req, res) {
     console.log(req.body);
     var foo = JSON.parse(req.body.hello);

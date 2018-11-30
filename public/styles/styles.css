@@ -24,13 +24,11 @@
   padding: 20px; 
   float: left;
   /* display: inline-block; */
-  width: 400px;
-  height: auto;
   text-align: center;
 }
 
 #search {
-  width: 200px; 
+  width: 190px; 
 }
 
 #rightHome {
@@ -38,17 +36,26 @@
   padding: 20px; 
   float: right;
   /* display: inline-block; */
-  width: 400px;
-  height: auto;
+  
   text-align: center;
 }
 
 #create {
-  width: 200px;
+  width: 190px;
+  vertical-align: middle;
 }
 
 .btn {
   text-align: center;
+}
+
+#homeBtn {
+  text-align: center; 
+}
+
+.form {
+  display: table-cell;
+  text-align: center; 
 }
 
 .btn-primary {
@@ -74,7 +81,10 @@
 }
 
 #add-recipe {
-  margin: 6px;
+  margin: 10px;
+  padding-left: 200px;
+  padding-right: 200px;
+  padding-top: 20px; 
 }
 
 #addButton {

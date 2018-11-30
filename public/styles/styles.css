@@ -70,9 +70,11 @@
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited,
-.btn-primary:focus {
+.btn-primary:focus,
+.btn-primary:focus-within {
   background-color: black;
   border-color: black;
+  box-shadow: 0 0 0 0.2rem rgba(7, 7, 7, 0.5);
 }
 
 #text-button {
@@ -84,13 +86,20 @@
   margin: 10px 10px 10px 0px;
 }
 
+#text-button:hover,
+#text-button:focus,
+#text-button:focus-within {
+  background-color: black;
+  border-color: black;
+  box-shadow: 0 0 0 0.2rem rgba(7, 7, 7, 0.5);
+
+}
+
 #close-modal {
-  background-color: #90C226;
-  border-color: #90C226;
-  color: white;
+  border-color: #666;
+  background-color: #666;
+  color: #fff;
   align-items: center;
-  padding: 10px;
-  margin: -6px 10px 10px 10px;
 }
 
 #phone-number {
@@ -205,3 +214,17 @@
   overflow: hidden;
   /* Also can take single values to make all sides the same, or 2 values (vert/horz), or 3 values (top/horz/bottom). */
 }
+#recipes-Cards > .card {
+width:30%;
+justify-content: space-between;
+
+}
+
+#printbut > .btn {
+  padding: 10px;
+  margin: 10px 10px 10px 0px;
+  height:50px;
+  vertical-align: middle;
+}
+
+

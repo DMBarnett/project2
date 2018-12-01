@@ -1,3 +1,10 @@
+
+
+h3.title {
+  color:#90C226;
+ }
+ 
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -208,6 +215,7 @@
   background-color: #90C226;
 }
 
+
 .recipe-card-image {
   width: 100%;
   height: 200px;
@@ -215,7 +223,7 @@
   /* Also can take single values to make all sides the same, or 2 values (vert/horz), or 3 values (top/horz/bottom). */
 }
 #recipes-Cards > .card {
-width:30%;
+width:47%;
 justify-content: space-between;
 
 }

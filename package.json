@@ -17,6 +17,7 @@
     "file-system": "^2.2.2",
     "fs": "0.0.1-security",
     "mysql2": "^1.5.3",
+    "print-js": "^1.0.53",
     "sequelize": "^4.38.0",
     "twilio": "^3.24.0",
     "unirest": "^0.5.1"

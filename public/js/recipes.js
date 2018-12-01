@@ -107,6 +107,19 @@ $(document).ready(function () {
         console.log(response);
       });
     });
+    function print() {
+      printJS({
+        printable: 'single-recipe',
+        type: 'html',
+        targetStyles: ['*'],
+        ignoreElements: ['single-recipe-footer']
+     })
+    }
+    $("#print-button").on("click", function () {
+      event.preventDefault();
+      print();
+  });
+    
 
     var modal = $(this)
     modal.find('.modal-title').text(recipeName);
